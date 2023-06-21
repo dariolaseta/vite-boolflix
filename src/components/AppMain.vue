@@ -1,5 +1,10 @@
 <template>
-<Searchbar />
+<Searchbar @searched="searchMovies"/>
+<ul>
+    <li v-for="(movies, index) in movieList">
+        {{movieList[index].original_title}}
+    </li>
+</ul>
 </template>
 
 <script>
@@ -12,7 +17,7 @@ export default {
     data(){
         return{
             movieList: [],
-            api: "https://api.themoviedb.org/3/search/movie?api_key=9cf30d55b864819ac35dd0f7928aab85&query="
+            api: "https://api.themoviedb.org/3/search/movie?api_key=9cf30d55b864819ac35dd0f7928aab85&query=back"
         }
     },
     components: {
@@ -26,7 +31,8 @@ export default {
                     name: needle
                 }
             }).then((response) =>{
-                console.log(response);
+                this.movieList = response.data.results;
+                console.log(this.movieList);
             })
         }
     },
