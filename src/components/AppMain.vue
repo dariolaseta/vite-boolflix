@@ -1,8 +1,6 @@
 <template>
-
+<Searchbar />
 </template>
-
-//milestone 0 completed
 
 <script>
 import Searchbar from "./Searchbar.vue"
