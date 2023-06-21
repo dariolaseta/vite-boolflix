@@ -1,6 +1,6 @@
 <template>
     <div class="search-bar">
-        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searchedText">
+        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searchedText" @keyup.enter="$emit('searched', searchedText)">
         <button @click="$emit('searched', searchedText)">Cerca</button>
     </div>
 </template>
