@@ -1,13 +1,18 @@
 <template>
     <div class="search-bar">
-        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film">
-        <button>Cerca</button>
+        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searchedText">
+        <button @click="$emit('searched', searchedText)">Cerca</button>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Searchbar"
+    name: "Searchbar",
+    data(){
+        return{
+            searchedText : "",
+        }
+    }
 }
 </script>
 
