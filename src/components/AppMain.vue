@@ -5,7 +5,11 @@
             <div>
                 <p>{{"Titolo: " + movieList[index].title}}</p>
                 <p> {{" Titolo originale: " + movieList[index].original_title}}</p>
-                <p>{{ "Lingua: " + movieList[index].original_language }}</p>
+                <p v-if="movieList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt=""></p>
+                <p v-if="movieList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt=""></p>
+                <p v-if="movieList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt=""></p>
+                <p v-if="movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt=""></p>
+                <p v-else>{{ "Lingua: " + movieList[index].original_language }}</p>
                 <p>{{ "Voto: " + movieList[index].vote_average }}</p>
             </div>
         </li>
@@ -56,6 +60,9 @@ export default {
     li{
         div{
             margin: 1rem;
+            img{
+                width: 2%;
+            }
         }
     }
 </style>
