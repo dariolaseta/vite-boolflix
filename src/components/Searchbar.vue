@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
-        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searchedText" @keyup.enter="$emit('searched', searchedText)">
-        <button @click="$emit('searched', searchedText)">Cerca</button>
+        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searchedText" @keyup.enter="$emit('searched', searchedText, searchedSeries)">
+        <button @click="$emit('searched', searched, searchedSeries)">Cerca</button>
     </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
     data(){
         return{
             searchedText : "",
+            searchedSeries: ""
         }
     }
 }
