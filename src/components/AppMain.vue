@@ -2,11 +2,14 @@
     <Searchbar @searched="searchMovies"/>
     <ul>
         <li v-for="(movies, index) in movieList">
-            {{"Titolo: " + movieList[index].title}}
-            {{" ----- Titolo originale: " + movieList[index].original_title + " ----- Lingua: " + movieList[index].original_language + " ----- Voto: " + movieList[index].vote_average}}
+            <div>
+                <p>{{"Titolo: " + movieList[index].title}}</p>
+                <p> {{" Titolo originale: " + movieList[index].original_title}}</p>
+                <p>{{ "Lingua: " + movieList[index].original_language }}</p>
+                <p>{{ "Voto: " + movieList[index].vote_average }}</p>
+            </div>
         </li>
     </ul>
-    <p>{{ searchedText }}</p>
 
 </template>
 
@@ -20,7 +23,6 @@ export default {
     data(){
         return{
             movieList: [],
-            api: "https://api.themoviedb.org/3/search/movie?api_key=9cf30d55b864819ac35dd0f7928aab85&query="
         }
     },
     components: {
@@ -51,5 +53,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    
+    li{
+        div{
+            margin: 1rem;
+        }
+    }
 </style>
