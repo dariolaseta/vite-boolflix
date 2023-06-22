@@ -10,12 +10,16 @@
                 <h1>FILM</h1>
                 <p>{{"Titolo: " + store.movieList[index].title}}</p>
                 <p> {{" Titolo originale: " + store.movieList[index].original_title}}</p>
-                <p v-if="store.movieList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt=""></p>
-                <p v-if="store.movieList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt=""></p>
-                <p v-if="store.movieList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt=""></p>
-                <p v-if="store.movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt=""></p>
+                <p v-if="store.movieList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt="" class="lang-img"></p>
+                <p v-if="store.movieList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt="" class="lang-img"></p>
+                <p v-if="store.movieList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt="" class="lang-img"></p>
+                <p v-if="store.movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.movieList[index].original_language }}</p>
                 <p>{{ "Voto: " + store.movieList[index].vote_average }}</p>
+
+                <div class="card">
+                    <img :src="`https://image.tmdb.org/t/p/w342/${store.movieList[index].poster_path}`" alt="">
+                </div>
             </div>
         </li>
     </ul>
@@ -26,45 +30,20 @@
                 <h1>Serie tv</h1>
                 <p>{{"Titolo: " + store.tvSeriesList[index].name}}</p>
                 <p> {{" Titolo originale: " + store.tvSeriesList[index].original_name}}</p>
-                <p v-if="store.tvSeriesList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt=""></p>
-                <p v-if="store.tvSeriesList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt=""></p>
-                <p v-if="store.tvSeriesList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt=""></p>
-                <p v-if="store.tvSeriesList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt=""></p>
+                <p v-if="store.tvSeriesList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt="" class="lang-img"></p>
+                <p v-if="store.tvSeriesList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt="" class="lang-img"></p>
+                <p v-if="store.tvSeriesList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt="" class="lang-img"></p>
+                <p v-if="store.tvSeriesList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.tvSeriesList[index].original_language }}</p>
                 <p>{{ "Voto: " + store.tvSeriesList[index].vote_average }}</p>
+                
+                <div class="card">
+                    <img :src="`https://image.tmdb.org/t/p/w342/${store.tvSeriesList[index].poster_path}`" alt="">
+                </div>
             </div>
+            
         </li>
     </ul>
-
-    <!-- <ul class="movies">
-        <li v-for="(movies, index) in movieList">
-            <div>
-                <p>{{"Titolo: " + movieList[index].title}}</p>
-                <p> {{" Titolo originale: " + movieList[index].original_title}}</p>
-                <p v-if="movieList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt=""></p>
-                <p v-if="movieList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt=""></p>
-                <p v-if="movieList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt=""></p>
-                <p v-if="movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt=""></p>
-                <p v-else>{{ "Lingua: " + movieList[index].original_language }}</p>
-                <p>{{ "Voto: " + movieList[index].vote_average }}</p>
-            </div>
-        </li>
-    </ul> -->
-
-    <!-- <ul class="tv-series">
-        <li v-for="(tv, index) in tvSeriesList">
-            <div>
-                <p>{{"Titolo: " + tvSeriesList[index].title}}</p>
-                <p> {{" Titolo originale: " + tvSeriesList[index].original_title}}</p>
-                <p v-if="tvSeriesList[index].original_language === 'en'"><img src="../assets/imgs/eng.png" alt=""></p>
-                <p v-if="tvSeriesList[index].original_language === 'it'"><img src="../assets/imgs/it.png" alt=""></p>
-                <p v-if="tvSeriesList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt=""></p>
-                <p v-if="tvSeriesList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt=""></p>
-                <p v-else>{{ "Lingua: " + tvSeriesList[index].original_language }}</p>
-                <p>{{ "Voto: " + tvSeriesList[index].vote_average }}</p>
-            </div>
-        </li>
-    </ul> -->
 </template>
 
 <script>
@@ -108,8 +87,14 @@ export default {
         li{
             div{
                 margin: 1rem;
-                img{
+                img.lang-img{
                     width: 2%;
+                }
+                div.card{
+                    margin: 2rem 0;
+                    img{
+                        width: 50%;
+                    }
                 }
             }
         }
@@ -128,5 +113,10 @@ export default {
         button{
             padding: .7rem 3rem;
         }
+    }
+
+    div.card{
+        height: 200px;
+        width: 300px;
     }
 </style>
