@@ -15,7 +15,7 @@
                 <p v-if="store.movieList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt="" class="lang-img"></p>
                 <p v-if="store.movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.movieList[index].original_language }}</p>
-                <p>{{ "Voto: " + store.movieList[index].vote_average }}</p>
+                <p>{{ "Voto: " + numberArray[index] }}</p>
 
                 <div class="card">
                     <img :src="`https://image.tmdb.org/t/p/w342/${store.movieList[index].poster_path}`" alt="">
@@ -35,7 +35,7 @@
                 <p v-if="store.tvSeriesList[index].original_language === 'ja'"><img src="../assets/imgs/jp.png" alt="" class="lang-img"></p>
                 <p v-if="store.tvSeriesList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.tvSeriesList[index].original_language }}</p>
-                <p>{{ "Voto: " + store.tvSeriesList[index].vote_average }}</p>
+                <p>{{ "Voto: " + numberArray[index] }}</p>
                 
                 <div class="card">
                     <img :src="`https://image.tmdb.org/t/p/w342/${store.tvSeriesList[index].poster_path}`" alt="">
@@ -57,6 +57,7 @@ export default {
     data(){
         return{
             searched: "",
+            numberArray: [],
             store
         }
     },
@@ -76,7 +77,15 @@ export default {
                 store.movieList = response.data.results;
                 console.log(store.movieList)
             });
+        },
+        convertNumber(){
+            this.store.tvSeriesList.forEach(el =>{
+                this.numberArray.push(Math.round((el.vote_average / 10) *5));
+            });
         }
+    },
+    beforeUpdate(){
+        this.convertNumber();
     }
 }
 </script>
