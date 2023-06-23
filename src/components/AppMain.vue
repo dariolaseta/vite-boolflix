@@ -62,7 +62,6 @@ export default {
 <style scoped lang="scss">
     main{
         background-color: #1b1b1b;
-        height: 100vh;
     }
     
     ul{
