@@ -10,8 +10,8 @@
                 <p v-if="store.movieList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.movieList[index].original_language }}</p>
                 <p>{{ "Voto: " + numberArray[index] }}</p>
-    
             </div>
+            
             <div class="card-img">
                 <img :src="`https://image.tmdb.org/t/p/w342/${store.movieList[index].poster_path}`" alt="">
             </div>
@@ -27,8 +27,8 @@
                 <p v-if="store.tvSeriesList[index].original_language === 'ru'"><img src="../assets/imgs/ru.png" alt="" class="lang-img"></p>
                 <p v-else>{{ "Lingua: " + store.tvSeriesList[index].original_language }}</p>
                 <p>{{ "Voto: " + numberArray[index] }}</p>
-                        
             </div>
+
             <div class="card-img">
                 <img :src="`https://image.tmdb.org/t/p/w342/${store.tvSeriesList[index].poster_path}`" alt="">
             </div>
@@ -75,32 +75,35 @@ export default {
     }
     div.cards{
         display: flex;
-        
         flex-wrap: wrap;
+        
     }
     div.card{
         display: flex;
         height: 60%;
         width: calc(100% / 5);
     }
-            div{
-                p{
-                    margin: 1rem;
-                    width: 100%;
-                }
+        div{
+            p{
                 margin: 1rem;
-                img.lang-img{
-                    width: 20%;
-                }
-                div.card-img{
-                    margin: 2rem 0;
-                    img{
-                        width: 200px;
-                    }
+                width: 100%;
+            }
+            margin: 1rem;
+            img.lang-img{
+                width: 20%;
+            }
+            div.card-img{
+                margin: 2rem 0;
+                img{
+                    width: 200px;
                 }
             }
+        }
     ul.tv-series{
         margin-top: 5rem;
+    }
+    p{
+        color: white;
     }
 
     p:hover{

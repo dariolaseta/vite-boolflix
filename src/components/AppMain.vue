@@ -1,10 +1,25 @@
 <template>
-    <div class="search-bar">
-        <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searched" @keyup.enter="searchMoviesAndSeries">
-        <button @click="searchMoviesAndSeries">Cerca</button>
-    </div>
-
-    <Card />
+    <main>
+        <div class="search-bar">
+            <div class="left-bar flex">
+                <h1><a href="#" class="logo-text">Boolflix</a></h1>
+                <ul class="flex">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Serie TV</a></li>
+                    <li><a href="#">Film</a></li>
+                    <li><a href="#">Originali</a></li>
+                    <li><a href="#">Aggiunti di recente</a></li>
+                    <li><a href="#">La mia lista</a></li>
+                </ul>
+            </div>
+            <div class="bar">
+                <input type="text" name="search-bar" id="search-bar" placeholder="Inserisci il titolo di un film" v-model="searched" @keyup.enter="searchMoviesAndSeries">
+                <button @click="searchMoviesAndSeries">Cerca</button>
+            </div>
+        </div>
+    
+        <Card />
+    </main>
 </template>
 
 <script>
@@ -45,16 +60,58 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    main{
+        background-color: #1b1b1b;
+        height: 100vh;
+    }
+    
+    ul{
+        list-style-type: none;
+    }
+
+    a{
+        text-decoration: none;
+        color: #a2a2a2;
+    }
+
+    .flex{
+        display: flex;
+        flex-direction: row;
+    }
+
+    ul.flex{
+        align-items: center;
+        margin: 0 1rem;
+        li{
+            margin: 0 .5rem;
+        }
+    }
     
     div.search-bar{
-        input#search-bar{
-            margin: 2rem .5rem ;
-            padding: .7rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a.logo-text{
+            color: red;
         }
 
-        button{
-            padding: .7rem 3rem;
+        div.left-bar{
+            margin: 0 auto;
         }
+
+        div.bar{
+            margin: 0 auto;
+            input#search-bar{
+                margin: 2rem .5rem ;
+                padding: .7rem;
+            }
+    
+            button{
+                padding: .7rem 3rem;
+            }
+        }
+
     }
 
     div.card{
